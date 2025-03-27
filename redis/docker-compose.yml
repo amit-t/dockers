@@ -1,0 +1,14 @@
+version: '3.6'
+services:
+    redis:
+        image: redis/redis-stack-server:latest
+        ports:
+            - '6379:6379'
+        healthcheck:
+            test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
+        volumes:
+            - /Users/amittiwari/Infra/dock-containers/redis/redis_data:/data
+        environment:
+            #      - REDIS_USERNAME=redis_dev
+            #      - REDIS_PASSWORD=wWN60jcLmz
+            - REDIS_ARGS="--requirepass wWN60jcLmz"

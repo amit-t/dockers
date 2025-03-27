@@ -1,0 +1,20 @@
+version: '3.1' #format version for this docker compose file
+services:
+  mongo-container:
+    image: mongo:latest
+    restart: always
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    command: mongod
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=tSpNnrbppi
+      - MONGO_INITDB_DATABASE=admin
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      # Here you are setting the username and password
+      # so change it to whatever you want
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    volumes:
+      - ./db_data/:/data/db/
+
