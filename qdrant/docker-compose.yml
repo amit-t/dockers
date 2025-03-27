@@ -10,13 +10,9 @@ services:
       - 6333:6333 # tcp
       - 6334:6334 # grpc
     volumes:
-    - /Users/amittiwari/Infra/dock-containers/qdrant/qdrant_data:/qdrant/storage
+    - ${QDRANT_BASE_PATH}:/qdrant/storage
     networks:
       - db
     restart: always
-
-volumes:
-  qdrant_data:
-
 networks:
   db:

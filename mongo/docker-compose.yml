@@ -7,14 +7,12 @@ services:
     ports:
       - "27017:27017"
     command: mongod
+    env_file:
+      - .env
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=tSpNnrbppi
-      - MONGO_INITDB_DATABASE=admin
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      # Here you are setting the username and password
-      # so change it to whatever you want
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
     volumes:
-      - ./db_data/:/data/db/
+      - ${MONGO_BASE_PATH}/${MONGO_INITDB_ROOT_USERNAME}:/${MONGO_INITDB_ROOT_USERNAME}
 

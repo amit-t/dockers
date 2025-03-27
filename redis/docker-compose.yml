@@ -6,9 +6,9 @@ services:
             - '6379:6379'
         healthcheck:
             test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
+        env_file:
+            - .env
         volumes:
-            - /Users/amittiwari/Infra/dock-containers/redis/redis_data:/data
+            - ${REDIS_BASE_PATH}/redis_data:/data
         environment:
-            #      - REDIS_USERNAME=redis_dev
-            #      - REDIS_PASSWORD=wWN60jcLmz
-            - REDIS_ARGS="--requirepass wWN60jcLmz"
+            - REDIS_ARGS="--requirepass ${REDIS_PASSWORD}"
