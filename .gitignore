@@ -1,3 +1,4 @@
 redis/redis_data
 qdrant/qdrant_data
 .env
+**/.env
